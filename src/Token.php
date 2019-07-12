@@ -14,6 +14,7 @@ class Token
    */
   public static function decode(string $token = null, string $publicKey)
   {
+    JWT::$leeway = 5;
     $publicKey = self::buildPublicKey($publicKey);
     return $token ? JWT::decode($token, $publicKey, ['RS256']) : null;
   }
